@@ -2,7 +2,7 @@ import { useState } from "react";
 import { LogoImg } from "../constants";
 
 const RibsShowcase = () => {
-  const phoneNumber = "+27715231720"; // WhatsApp number
+  const phoneNumber = "+27837251331"; // WhatsApp number
   const [cart, setCart] = useState({});
   const [orderType, setOrderType] = useState("delivery");
   const [address, setAddress] = useState("");
@@ -41,15 +41,11 @@ const RibsShowcase = () => {
     return encodeURIComponent(message);
   };
 
-const handlePlaceOrder = () => {
-  const encodedMessage = generateOrderMessage();
-  const cleanedPhone = phoneNumber.replace(/\D/g, ""); // Remove non-numeric characters
-  const orderUrl = `https://api.whatsapp.com/send?phone=${cleanedPhone}&text=${encodedMessage}`;
-  
-  window.open(orderUrl, "_blank");
-  setOrderSent(true);
-};
-
+  const handlePlaceOrder = () => {
+    const orderUrl = `https://wa.me/${phoneNumber}?text=${generateOrderMessage()}`;
+    window.open(orderUrl, "_blank");
+    setOrderSent(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 text-center overflow-x-hidden">
